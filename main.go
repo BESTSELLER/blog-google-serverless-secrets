@@ -15,15 +15,15 @@ var secret string
 func init() {
 	vaultAddr := os.Getenv("VAULT_ADDR")
 	if vaultAddr == "" {
-		log.Fatal("VAULT_ADDR must be set.")
+		log.Fatal("VAULT_ADDR environment variable must be set.")
 	}
 	vaultSecret := os.Getenv("VAULT_SECRET")
 	if vaultSecret == "" {
-		log.Fatal("VAULT_SECRET must be set.")
+		log.Fatal("VAULT_SECRET environment variable must be set.")
 	}
 	vaultRole := os.Getenv("VAULT_ROLE")
 	if vaultRole == "" {
-		log.Fatal("VAULT_ROLE must be set.")
+		log.Fatal("VAULT_ROLE environment variable must be set.")
 	}
 
 	var err error
