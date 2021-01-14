@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -36,18 +35,13 @@ func init() {
 }
 
 func main() {
+	log.Println(secret)
 	http.HandleFunc("/", getSecret)
 	http.ListenAndServe(":8080", nil)
 }
 
 func getSecret(w http.ResponseWriter, r *http.Request) {
 
-	jsonData, err := json.Marshal(secret)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(jsonData)
+	w.Write([]byte(secret))
 }
